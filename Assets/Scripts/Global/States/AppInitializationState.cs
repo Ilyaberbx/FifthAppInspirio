@@ -34,6 +34,7 @@ namespace Inspirio.Global.States
         public override void OnEntered()
         {
             base.OnEntered();
+            
             GameStatesService.ChangeStateAsync(DetermineNextState()).Forget();
         }
 
