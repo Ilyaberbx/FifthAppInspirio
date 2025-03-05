@@ -600,11 +600,15 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 199133773128007681
+      type: {class: InputService, ns: Inspirio.Gameplay.Services.Input, asm: Assembly-CSharp}
+      data: 
     - rid: 9117324378338492417
       type: {class: PocoServicesInstaller, ns: Better.Contexts.Runtime.Installers, asm: Better.Contexts.Runtime}
       data:
         _services:
         - rid: 9117324465804148750
+        - rid: 199133773128007681
     - rid: 9117324465804148750
       type: {class: GameplayStatesService, ns: Inspirio.Gameplay.Services.StatesManagement, asm: Assembly-CSharp}
       data: 
