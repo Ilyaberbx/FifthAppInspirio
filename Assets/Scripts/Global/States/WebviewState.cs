@@ -5,7 +5,7 @@ using Better.Locators.Runtime;
 using Inspirio.Global.Services.Persistence;
 using Inspirio.Global.Services.StatesManagement;
 using Inspirio.Global.Services.StaticDataManagement;
-using Inspirio.UI.Huds.Navigation;
+using Inspirio.UI.Huds.WebView;
 using Inspirio.UI.Services.Huds;
 using Inspirio.UI.Services.Loading;
 using Inspirio.Webview;
@@ -62,8 +62,8 @@ namespace Inspirio.Global.States
             _urlSuccessfullyLoaded = await _webViewService.TryLoadUrl(url);
         }
 
-        private Task<NavigationHudController> ShowNavigationBar() =>
-            _hudsService.ShowAsync<NavigationHudController, NavigationHudModel>(NavigationHudModel.New(),
+        private Task<WebViewHudController> ShowNavigationBar() =>
+            _hudsService.ShowAsync<WebViewHudController, WebViewHudModel>(WebViewHudModel.New(),
                 ShowType.Single);
 
         public override void OnEntered()

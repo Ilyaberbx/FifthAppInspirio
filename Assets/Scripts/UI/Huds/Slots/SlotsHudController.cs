@@ -3,7 +3,7 @@ using Inspirio.Gameplay.Services.Input;
 using Inspirio.Gameplay.Services.Level;
 using Inspirio.UI.Core;
 
-namespace Inspirio.UI.Huds.Gameplay
+namespace Inspirio.UI.Huds.Slots
 {
     public sealed class SlotsHudController : BaseController<SlotsHudModel, SlotsHudView>
     {

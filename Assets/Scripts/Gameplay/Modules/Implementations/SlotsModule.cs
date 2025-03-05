@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Better.Locators.Runtime;
-using Inspirio.UI.Huds.Gameplay;
+using Inspirio.UI.Huds.Navigation;
+using Inspirio.UI.Huds.Slots;
 using Inspirio.UI.Services.Huds;
 
 namespace Inspirio.Gameplay.Modules
@@ -9,10 +10,11 @@ namespace Inspirio.Gameplay.Modules
     {
         private IHudsService _hudsService;
 
-        public override Task InitializeAsync()
+        public override async Task InitializeAsync()
         {
             _hudsService = ServiceLocator.Get<HudsService>();
-            return _hudsService.ShowAsync<SlotsHudController, SlotsHudModel>(new SlotsHudModel(), ShowType.Additive);
+            await _hudsService.ShowAsync<SlotsHudController, SlotsHudModel>(new SlotsHudModel(), ShowType.Additive);
+            await _hudsService.ShowAsync<NavigationHudController, NavigationHudModel>(new NavigationHudModel(), ShowType.Additive);
         }
 
         public override void Dispose() => _hudsService = null;

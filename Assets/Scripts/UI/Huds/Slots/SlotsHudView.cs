@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Inspirio.UI.Huds.Gameplay
+namespace Inspirio.UI.Huds.Slots
 {
     public sealed class SlotsHudView : BaseView
     {
