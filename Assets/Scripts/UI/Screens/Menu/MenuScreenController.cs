@@ -25,6 +25,6 @@ namespace Inspirio.UI.Screens.Menu
             View.OnPlayClicked -= OnPlayButtonClicked;
         }
 
-        private void OnPlayButtonClicked() => _gameplayStatesService.ChangeStateAsync<RoadMapState>();
+        private void OnPlayButtonClicked() => _gameplayStatesService.ChangeStateAsync<SlotsMiniGameState>();
     }
 }

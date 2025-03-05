@@ -1,13 +1,12 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Better.Locators.Runtime;
-using Inspirio.Gameplay.Modules;
 using Inspirio.UI.Services.Huds;
 using Inspirio.UI.Services.Popups;
 
 namespace Inspirio.Gameplay.States
 {
-    public sealed class BoardMiniGameState : BaseGameplayState
+    public sealed class SlotsMiniGameState : BaseGameplayState
     {
         private IPopupsService _popupsService;
         private IHudsService _hudsService;
@@ -15,13 +14,6 @@ namespace Inspirio.Gameplay.States
         public override async Task EnterAsync(CancellationToken token)
         {
             InitializeServices();
-            await AddModuleAsync<GameBoardModule>();
-            await AddModuleAsync<PauseModule>();
-            await AddModuleAsync<ScoreModule>();
-            await AddModuleAsync<GameExodusModule>();
-            await AddModuleAsync<ReturnModule>();
-            await AddModuleAsync<EffectsModule>();
-            await AddModuleAsync<AnalyticsModule>();
         }
 
         private void InitializeServices()

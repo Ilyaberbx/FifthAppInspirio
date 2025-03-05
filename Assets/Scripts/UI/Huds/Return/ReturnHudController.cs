@@ -23,6 +23,6 @@ namespace Inspirio.UI.Huds.Return
             View.OnReturnClicked -= OnReturnClicked;
         }
 
-        private void OnReturnClicked() => _gameplayStatesService.ChangeStateAsync<RoadMapState>().Forget();
+        private void OnReturnClicked() => _gameplayStatesService.ChangeStateAsync<MainMenuState>().Forget();
     }
 }
