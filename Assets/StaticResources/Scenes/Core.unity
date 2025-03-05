@@ -685,6 +685,9 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 199133774378434563
+      type: {class: SpriteService, ns: Inspirio.Gameplay.Services.Sprites, asm: Assembly-CSharp}
+      data: 
     - rid: 6450054146183397379
       type: {class: PocoServicesInstaller, ns: Better.Contexts.Runtime.Installers, asm: Better.Contexts.Runtime}
       data:
@@ -699,6 +702,7 @@ MonoBehaviour:
         - rid: 9117324465804148747
         - rid: 9117324465804148743
         - rid: 9117324724290977792
+        - rid: 199133774378434563
     - rid: 9117324465804148737
       type: {class: ScreensService, ns: Inspirio.UI.Services.Screens, asm: Assembly-CSharp}
       data:
