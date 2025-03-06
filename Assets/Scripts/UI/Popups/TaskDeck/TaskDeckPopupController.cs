@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Better.Commons.Runtime.Extensions;
 using Better.Commons.Runtime.Utility;
 using Better.Locators.Runtime;
+using Inspirio.Gameplay.Services.Rewards;
 using Inspirio.Gameplay.Services.Sprites;
 using Inspirio.Gameplay.Services.Tasks;
 using Inspirio.UI.Core;
+using Inspirio.UI.Popups.NewTask;
+using Inspirio.UI.Services.Popups;
 using Inspirio.UI.ViewComponents;
 
 namespace Inspirio.UI.Popups.TaskDeck
@@ -15,6 +19,8 @@ namespace Inspirio.UI.Popups.TaskDeck
     {
         private ITasksService _tasksService;
         private ISpritesService _spriteService;
+        private IRewardsService _rewardsService;
+        private IPopupsService _popupsService;
 
         protected override void Show(TaskDeckPopupModel model, TaskDeckPopupView view)
         {
@@ -22,6 +28,8 @@ namespace Inspirio.UI.Popups.TaskDeck
 
             _tasksService = ServiceLocator.Get<TasksService>();
             _spriteService = ServiceLocator.Get<SpriteService>();
+            _rewardsService = ServiceLocator.Get<RewardsService>();
+            _popupsService = ServiceLocator.Get<PopupsService>();
 
             Model.AllTasks.Subscribe(OnAllTasksChanged);
             Model.AllTasks.Value = _tasksService.GetAllTasks();
@@ -33,6 +41,8 @@ namespace Inspirio.UI.Popups.TaskDeck
                 deskTaskView.OnCompleteClicked += OnCompleteClicked;
                 deskTaskView.OnDismissClicked += OnDismissClicked;
             }
+
+            View.OnAddClicked += OnAddClicked;
         }
 
         protected override void Hide()
@@ -46,7 +56,13 @@ namespace Inspirio.UI.Popups.TaskDeck
                 deskTaskView.OnCompleteClicked -= OnCompleteClicked;
                 deskTaskView.OnDismissClicked -= OnDismissClicked;
             }
+
+            View.OnAddClicked -= OnAddClicked;
         }
+
+        private void OnAddClicked() => _popupsService
+            .ShowAsync<NewTaskPopupController, NewTaskPopupModel>(new NewTaskPopupModel())
+            .Forget();
 
         private async void OnAllTasksChanged(IEnumerable<GameTask> allTasks)
         {
@@ -106,13 +122,14 @@ namespace Inspirio.UI.Popups.TaskDeck
             for (var j = 0; j < deskTaskView.CurrencyViews.Length; j++)
             {
                 var currencyView = deskTaskView.CurrencyViews[j];
-                if (j >= task.Rewards.Length)
+                var rewards = _rewardsService.GetRewards(task.Priority);
+                if (j >= rewards.Length)
                 {
                     currencyView.SetActive(false);
                     continue;
                 }
 
-                var reward = task.Rewards[j];
+                var reward = rewards[j];
                 var rewardIcon = await _spriteService.GetCurrencySpriteAsync(reward.Type);
                 currencyView.SetCountText(reward.Amount.ToString());
                 currencyView.SetIcon(rewardIcon);

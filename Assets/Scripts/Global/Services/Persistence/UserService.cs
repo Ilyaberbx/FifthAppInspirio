@@ -36,56 +36,11 @@ namespace Inspirio.Global.Services.Persistence
 
             GameTasks = new SavesProperty<List<GameTask>>(_savesSystem, nameof(GameTasks), new List<GameTask>()
             {
-                new("Call Client", TaskPriority.RoyalFlush, new[]
-                {
-                    new RewardData()
-                    {
-                        Amount = 500,
-                        Type = CurrencyType.Coins,
-                    },
-                    new RewardData()
-                    {
-                        Amount = 2,
-                        Type = CurrencyType.Diamonds,
-                    }
-                }),
-                new("Draft Email", TaskPriority.FourOfAKind, new[]
-                {
-                    new RewardData()
-                    {
-                        Amount = 350,
-                        Type = CurrencyType.Coins,
-                    },
-                    new RewardData()
-                    {
-                        Amount = 1,
-                        Type = CurrencyType.Diamonds,
-                    }
-                }),
-                new("Daily Workout", TaskPriority.FullHouse, new[]
-                {
-                    new RewardData()
-                    {
-                        Amount = 200,
-                        Type = CurrencyType.Coins,
-                    },
-                }),
-                new("Daily Workout", TaskPriority.Flush, new[]
-                {
-                    new RewardData()
-                    {
-                        Amount = 100,
-                        Type = CurrencyType.Coins,
-                    },
-                }),
-                new("Team Meeting", TaskPriority.TwoPair, new[]
-                {
-                    new RewardData()
-                    {
-                        Amount = 50,
-                        Type = CurrencyType.Coins,
-                    },
-                }),
+                new("Call Client", TaskPriority.RoyalFlush),
+                new("Draft Email", TaskPriority.FourOfAKind),
+                new("Daily Workout", TaskPriority.FullHouse),
+                new("Daily Workout", TaskPriority.Flush),
+                new("Team Meeting", TaskPriority.TwoPair),
             });
             return Task.CompletedTask;
         }

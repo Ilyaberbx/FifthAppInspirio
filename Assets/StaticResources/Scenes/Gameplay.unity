@@ -612,6 +612,13 @@ MonoBehaviour:
     - rid: 199133795891281920
       type: {class: TasksService, ns: Inspirio.Gameplay.Services.Tasks, asm: Assembly-CSharp}
       data: 
+    - rid: 199133799171227650
+      type: {class: GameplayStaticDataService, ns: Inspirio.Gameplay.Services.StaticDataManagement, asm: Assembly-CSharp}
+      data:
+        _rewardsConfiguration: {fileID: 11400000, guid: da8d5e3ed42f51847910384452834956, type: 2}
+    - rid: 199133799171227651
+      type: {class: RewardsService, ns: Inspirio.Gameplay.Services.Rewards, asm: Assembly-CSharp}
+      data: 
     - rid: 9117324378338492417
       type: {class: PocoServicesInstaller, ns: Better.Contexts.Runtime.Installers, asm: Better.Contexts.Runtime}
       data:
@@ -621,6 +628,8 @@ MonoBehaviour:
         - rid: 199133774378434560
         - rid: 199133774378434562
         - rid: 199133795891281920
+        - rid: 199133799171227650
+        - rid: 199133799171227651
     - rid: 9117324465804148750
       type: {class: GameplayStatesService, ns: Inspirio.Gameplay.Services.StatesManagement, asm: Assembly-CSharp}
       data: 

@@ -1,12 +1,14 @@
 ﻿using System;
 using Inspirio.Gameplay.Services.Currency;
+using Inspirio.Gameplay.Services.Tasks;
 
 namespace Inspirio.Gameplay.Data.Common
 {
     [Serializable]
     public sealed class RewardData
     {
-        public CurrencyType Type { get; set; }
-        public int Amount { get; set; }
+        public TaskPriority Priority;
+        public CurrencyType Type;
+        public int Amount;
     }
 }

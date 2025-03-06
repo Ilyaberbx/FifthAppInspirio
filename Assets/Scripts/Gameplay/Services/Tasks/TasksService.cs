@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Better.Locators.Runtime;
 using Better.Services.Runtime;
 using Inspirio.Gameplay.Services.Currency;
+using Inspirio.Gameplay.Services.Rewards;
 using Inspirio.Global.Services.Persistence;
 
 namespace Inspirio.Gameplay.Services.Tasks
@@ -14,6 +15,7 @@ namespace Inspirio.Gameplay.Services.Tasks
     {
         private ICurrencyService _currencyService;
         private IUserService _userService;
+        private IRewardsService _rewardsService;
 
         protected override Task OnInitializeAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 
@@ -21,6 +23,7 @@ namespace Inspirio.Gameplay.Services.Tasks
         {
             _currencyService = ServiceLocator.Get<CurrencyService>();
             _userService = ServiceLocator.Get<UserService>();
+            _rewardsService = ServiceLocator.Get<RewardsService>();
 
             return Task.CompletedTask;
         }
@@ -61,7 +64,9 @@ namespace Inspirio.Gameplay.Services.Tasks
                 return false;
             }
 
-            foreach (var reward in gameTask.Rewards)
+            var rewards = _rewardsService.GetRewards(gameTask.Priority);
+
+            foreach (var reward in rewards)
             {
                 _currencyService.AddCurrency(reward.Type, reward.Amount);
             }
