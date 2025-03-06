@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Better.Locators.Runtime;
 using Better.Services.Runtime;
 using Inspirio.Gameplay.Services.Currency;
+using Inspirio.Gameplay.Services.Tasks;
 using Inspirio.Global.Services.AssetsManagement;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace Inspirio.Gameplay.Services.Sprites
         private IAssetsService _assetsService;
         private const string Sprites = "Sprites/";
         private const string Currency = "Currency/";
+        private const string Priorities = "Priorities/";
 
         protected override Task OnInitializeAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 
@@ -27,6 +29,13 @@ namespace Inspirio.Gameplay.Services.Sprites
         public async Task<Sprite> GetCurrencySpriteAsync(CurrencyType type)
         {
             var path = Sprites + Currency + type;
+            var sprite = await _assetsService.Load<Sprite>(path);
+            return sprite;
+        }
+
+        public async Task<Sprite> GetPrioritySpriteAsync(TaskPriority priority)
+        {
+            var path = Sprites + Priorities + priority;
             var sprite = await _assetsService.Load<Sprite>(path);
             return sprite;
         }

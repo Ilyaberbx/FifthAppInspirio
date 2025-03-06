@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playButton: {fileID: 2376609499686680958}
+  _taskDeckButton: {fileID: 7353527187844536403}
 --- !u!1 &1548736660270501246
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,7 +746,7 @@ GameObject:
   - component: {fileID: 5977762055611238360}
   - component: {fileID: 7353527187844536403}
   m_Layer: 5
-  m_Name: MockButton (1)
+  m_Name: TaskDeckButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

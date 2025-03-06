@@ -16,6 +16,7 @@ namespace Inspirio.UI.Screens.Menu
             _gameplayStatesService = ServiceLocator.Get<GameplayStatesService>();
 
             View.OnPlayClicked += OnPlayButtonClicked;
+            View.OnTaskDeckClicked += OnTaskDeckClicked;
         }
 
         protected override void Hide()
@@ -23,8 +24,10 @@ namespace Inspirio.UI.Screens.Menu
             base.Hide();
 
             View.OnPlayClicked -= OnPlayButtonClicked;
+            View.OnTaskDeckClicked -= OnTaskDeckClicked;
         }
 
         private void OnPlayButtonClicked() => _gameplayStatesService.ChangeStateAsync<SlotsMiniGameState>();
+        private void OnTaskDeckClicked() => _gameplayStatesService.ChangeStateAsync<TasksDeckState>();
     }
 }

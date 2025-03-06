@@ -15,17 +15,14 @@ namespace Inspirio.Gameplay.Services.Currency
     public sealed class CurrencyService : PocoService, ICurrencyService
     {
         private IUserService _userService;
-
         public List<CurrencyData> Current => _userService.Currencies.Value;
         private SavesProperty<List<CurrencyData>> Currencies => _userService.Currencies;
         protected override Task OnInitializeAsync(CancellationToken cancellationToken) => Task.CompletedTask;
-
         protected override Task OnPostInitializeAsync(CancellationToken cancellationToken)
         {
             _userService = ServiceLocator.Get<UserService>();
             return Task.CompletedTask;
         }
-
         public void AddCurrency(CurrencyType type, int amount)
         {
             if (amount <= 0)

@@ -12,5 +12,6 @@ namespace Inspirio.UI.ViewComponents
 
         public void SetIcon(Sprite icon) => _iconImage.sprite = icon;
         public void SetCountText(string text) => _countText.text = text;
+        public void SetActive(bool isActive) => gameObject.SetActive(isActive);
     }
 }
